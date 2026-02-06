@@ -20,6 +20,9 @@
 </div>
 
 <p align="center">
+  <a href='https://arxiv.org/abs/2602.05986'>
+    <img src='https://img.shields.io/badge/Paper-2504.02826-brown?style=flat&logo=arXiv' alt='arXiv PDF'>
+  </a>
   <a href='https://huggingface.co/datasets/Xm4nQ8/RISE-Video'>
     <img src='https://img.shields.io/badge/Huggingface-Data-blue?style=flat&logo=huggingface' alt='data img/data'>
   </a>
@@ -31,7 +34,7 @@
 ## Introduction
 
 <div align="center">
-  <img src="images/data_distribution.jpg" width="80%">
+  <img src="images/data_distribution.jpg" width="100%">
 </div>
     
 
@@ -122,3 +125,14 @@ python eval.py
 You can then view the video evaluation results and scores in the corresponding folder.
 
 ## Citation
+```
+@misc{liu2026risevideovideogeneratorsdecode,
+      title={RISE-Video: Can Video Generators Decode Implicit World Rules?}, 
+      author={Mingxin Liu and Shuran Ma and Shibei Meng and Xiangyu Zhao and Zicheng Zhang and Shaofeng Zhang and Zhihang Zhong and Peixian Chen and Haoyu Cao and Xing Sun and Haodong Duan and Xue Yang},
+      year={2026},
+      eprint={2602.05986},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2602.05986}, 
+}
+```
