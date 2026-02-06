@@ -87,7 +87,7 @@ We conduct a comprehensive evaluation on 11 representative TI2V models, revealin
 
 ### 🤖 Video Gneneration
 
-The first frame and text prompt for video generation are [here](https://huggingface.co/datasets/VisionXLab/RISE-Video/blob/main). The generated videos should be organized in the form of:
+The first frame and text prompt for video generation are [here](https://huggingface.co/datasets/VisionXLab/RISE-Video). The generated videos should be organized in the form of:
 
 `{MODEL NAME}/{CATEGORY}/{TASK_ID}`
 - `MODEL NAME`: Generation model.
