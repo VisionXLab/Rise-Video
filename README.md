@@ -21,7 +21,7 @@
 
 <p align="center">
   <a href='https://arxiv.org/abs/2602.05986'>
-    <img src='https://img.shields.io/badge/Paper-2504.02826-brown?style=flat&logo=arXiv' alt='arXiv PDF'>
+    <img src='https://img.shields.io/badge/Paper-2602.05986-brown?style=flat&logo=arXiv' alt='arXiv PDF'>
   </a>
   <a href='https://huggingface.co/datasets/VisionXLab/RISE-Video'>
     <img src='https://img.shields.io/badge/Huggingface-Data-blue?style=flat&logo=huggingface' alt='data img/data'>
