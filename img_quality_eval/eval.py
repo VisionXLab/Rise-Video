@@ -104,12 +104,12 @@ def parse_response(content):
         data = json.loads(json_str)
         return int(data.get("score", 0)), data.get("justification", "")
     except:
-        return 0, content
+        return "null", content
 
 def evaluate_single_video(video_path, client, model_name):
     frames = extract_frames_from_video(video_path)
     if not frames:
-        return 0, "Frame extraction failed"
+        return "null", "Frame extraction failed"
 
     prompt = QUALITY_EVAL_PROMPT.format(num_frames=len(frames))
     
@@ -130,7 +130,7 @@ def evaluate_single_video(video_path, client, model_name):
         return parse_response(content)
     except Exception as e:
         print(f"GPT Error: {e}")
-        return 0, str(e)
+        return "null", str(e)
 
 def eval_image_quality(data_item, result_json_path, gpt_url, gpt_key, gpt_model):
 
@@ -152,11 +152,11 @@ def eval_image_quality(data_item, result_json_path, gpt_url, gpt_key, gpt_model)
         "justification": justification
     }
     
-
-    try:
-        with open(f"{result_json_path}/{data_item['task_id']}.json", 'w', encoding='utf-8') as f:
-            json.dump(new_record, f, indent=4, ensure_ascii=False)
-    except Exception as e:
-        print(f"  [ImageQuality] Error saving result: {e}")
+    if isinstance(score, int):
+        try:
+            with open(f"{result_json_path}/{data_item['task_id']}.json", 'w', encoding='utf-8') as f:
+                json.dump(new_record, f, indent=4, ensure_ascii=False)
+        except Exception as e:
+            print(f"  [ImageQuality] Error saving result: {e}")
 
     return score
