@@ -73,6 +73,7 @@ We conduct a comprehensive evaluation on 11 representative TI2V models, revealin
 | <img src="images/wan.png" width="25" height="25"> Wan2.6 | 70.0% | 88.8% | 72.5% | 94.5% | 77.8% | 21.3% |
 | <img src="images/kling-color.png" width="25" height="25"> Kling2.6 | 53.7% | 86.4% | 78.0% | 95.1% | 72.1% | 19.5% |
 | <img src="images/doubao.webp" width="25" height="25"> Seedance1.5-pro | 61.2% | 81.1% | 70.7% | 96.2% | 72.0% | 17.6% |
+| <img src="images/kand.png" width="25" height="25"> Kandinsky-5.0-I2V-Pro | 46.0% | 76.7% | 74.3% | 93.3% | 65.5% | 14.8% |
 | <img src="images/wan.png" width="25" height="25"> Wan2.2-I2V-A14B | 39.5% | 79.2% | 75.4% | 94.0% | 63.9% | 11.4% |
 | <img src="images/hunyuan-color.png" width="25" height="25"> HunyuanVideo-1.5-720P-I2V | 38.1% | 75.0% | 68.4% | 92.6% | 60.4% | 8.6% |
 | <img src="images/kand.png" width="25" height="25"> Kandinsky-5.0-I2V-Lite | 44.6% | 64.6% | 66.3% | 87.3% | 59.3% | 7.5% |
