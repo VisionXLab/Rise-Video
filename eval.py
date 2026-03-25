@@ -59,6 +59,9 @@ def eval_one(data):
     iq_score = eval_image_quality(data, image_quality_result_json, GPT_URL, GPT_KEY, GPT_MODEL_IMG_QUALITY)
     print(f"  Image Quality score: {iq_score}\n")
 
+    if data['task_id'].startswith("log"):
+        print("  [Skip] logical task for phy_rationality eval\n")
+        return
     phy_rat_score = eval_phy_rationality(data, phy_rationality_result_json, GPT_URL, GPT_KEY, GPT_MODEL)
     print(f"  Phy Rationality score: {phy_rat_score}\n")
 
