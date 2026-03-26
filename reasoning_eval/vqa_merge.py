@@ -37,45 +37,10 @@ def call_gpt(data, GPT_URL, GPT_KEY, GPT_MODEL):
             Do NOT wrap the JSON output in markdown code blocks (no ```json, no ```).
             Return only a valid JSON array.
              """
-        prompt_system_ref = """
-            # Video Evaluation Instruction
-            You are a strict **visual judge**. You will receive two images:
-            - **First image**: the generated video’s final frame
-            - **Second GT image**: the reference label image
-            - **FocusQuestion**: a short question that **specifies which part/region/attribute** of the LastFrame must match GT (e.g., “Is the top-right button label the same as GT?”)
-            Judge **only** what is visible in these two images. Do NOT guess or hallucinate.
-
-            ## Scoring (concise 1–5)
-            Score similarity for the aspect/region/attribute specified by **FocusQuestion**:
-            - **5** — Perfect match: all key objects, attributes, and layout align; no extra/missing elements.  
-            - **4** — Mostly match: only minor deviations; structure intact; no extra/missing **main** elements.  
-            - **3** — Partial match: several noticeable differences; core objects/layout still largely present.  
-            - **2** — Major mismatch: missing/extra main elements, wrong layout/relations, or multiple attribute errors.  
-            - **1** — Unrelated/unjudgeable: object types don’t match, layout invalid, or images unreadable.
-    
-            ## Output (strict JSON)
-            Example output:
-            {
-                "Question": "repeat the question",
-                "Score": 0-5,
-                "Reason": "the reason"
-            }
-            Do NOT wrap the JSON output in markdown code blocks (no ```json, no ```).
-            Return only a valid JSON dictionary.
-            """        
         
         raw_frames = data["frame_path"]
         questions = data["questions"]
-        
-        
-        if "ref_path" in data:
-            prompt_system = prompt_system_ref
-            gt = data["ref_path"]
-            raw_frames.append(gt)
-            #print(raw_frames)
 
-        else:
-            prompt_system = prompt_system
 
         frames = []
         for raw_frame in raw_frames:
@@ -102,24 +67,14 @@ def call_gpt(data, GPT_URL, GPT_KEY, GPT_MODEL):
                 raw_response = response.choices[0].message.content
                 #print(raw_response)
                 resp  = json.loads(response.choices[0].message.content)
-                if "ref_path" in data:
-                    result = {}
-                    result['task_id'] = data["task_id"]
-                    for key in ['Question', 'Score', 'Reason']:  ####
-                        res = resp[key]
-                        result[key] = res
-                    resps.append(result)
-                    final_score = result["Score"] / 5
-                   
-                else:
-                    count = len(resp)
-                    score = 0
-                    for item in resp:
-                        item["task_id"] = data["task_id"]
-                        resps.append(item)
-                        if 'yes' in item["answer"].lower():
-                            score  = score + 1
-                    final_score = score / count
+                count = len(resp)
+                score = 0
+                for item in resp:
+                    item["task_id"] = data["task_id"]
+                    resps.append(item)
+                    if 'yes' in item["answer"].lower():
+                        score  = score + 1
+                final_score = score / count
                 
                 single_score["task_id"] = data['task_id']
                 single_score['score'] = final_score
